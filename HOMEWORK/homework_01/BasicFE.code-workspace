@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../BasicFE"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "FE PRO"
+	}
+}
