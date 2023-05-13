@@ -65,10 +65,102 @@
 
 //==================== find =========================================
 //ищем имя, которое начинается и с маленькой, и с большой N
-let names = [`Steven`, `Alex`, `nina`, `John`]
+// let names = [`Steven`, `Alex`, `nina`, `John`]
 // let result = names.find(elem => elem[0].toUpperCase() === `N`)
 // console.log(result);
 
-let result = names.find(elem => elem.at(-1) === `a`)
-let result1 = names.find(elem => elem[elem.length-1] === `a`)
+// let result = names.find(elem => elem.at(-1) === `a`)
+// let result1 = names.find(elem => elem[elem.length-1] === `a`)
+// console.log(result);
+
+// =======================================================================
+// ======================= LESSON_07 =====================================
+
+// ---------------------- findIndex --------------------------------------
+// let names = [`Steven`, `Alex`, `nina`, `John`]
+// let result1 = names.findIndex((elem) => elem[0] === 'n')
+// let result2 = names.findIndex((elem) => elem[0] === 'x')
+// console.log(result1, result2);
+
+// Задача: найдите индекс элемента массива, который заканчивается на букву "и"
+// let a = ['велосипед', "самокат", "ролики"]
+// let result = a.findIndex((elem) => elem[elem.length-1] === 'и')
+// console.log(result);
+
+// ------------------------ sort -----------------------------------------
+// let a = [`c`,4,5,6,`b`,1,2,`a`,3,7,8,9,10,100]
+// a.sort()
+// console.log(a);
+
+//Как sort понимает, как нужно отсортировать массив
+// a.sort((crElem, nxElem) => crElem - nxElem)
+// console.log(a);
+
+// ---------- пример 1 ------------
+
+// let employees = [
+//     {id: 4, name: 'Steven'},
+//     {id: 2, name: 'Neena'},
+//     {id: 1, name: 'John'},
+//     {id: 3, name: 'King'},
+// ]
+
+// employees.sort((a, b) => a.id - b.id)
+// console.log(employees);
+
+// для строковых значений - только длинный вариант
+
+// employees.sort((a, b) => {
+//     if (a.name > b.name) return 1
+//     if (a.name < b.name) return -1
+//     if (a.name === b.name) return 0
+// })
+// console.log(employees);
+
+// ------------------ пример 2 -----------------------
+// let employees1 = [
+//     {id: 4, name: 'Steven'},
+//     {id: 2, name: 'Neena'},
+//     {id: 1, name: 'Johnie'},
+//     {id: 3, name: 'Kingsman'},
+//     {id: 5, name: 'Anna'},
+// ]
+
+// employees1.sort((l, m) => {
+//     if (l.name.length > m.name.length) return 1
+//     if (l.name.length < m.name.length) return -1
+//     if (l.name.length === m.name.length) return 0
+// })
+// короткий способ:
+// employees1.sort((l, m) => l.name.length - m.name.length)
+// console.log(employees1);
+
+// ------------------------ reduce ------------------------------------------
+
+// найти сумму всех элементов массива
+// let a = [10,50,30,40,50,10]
+
+// let result = 0
+// for (let i = 0; i < a.length; i++) { result = result + a[i] }
+// console.log(result);
+
+// решение через reduce
+// let result2 = a.reduce((summ, elem) => summ + elem)
+// console.log(result2);
+
+// --------------- пример ------------------
+// найти среднее значение цены в массиве объектов
+let goods = [
+    {id: 1, title: 'велосипед', price: 500},
+    {id: 2, title: 'самокат', price: 200},
+    {id: 3, title: 'ролики', price: 300},
+    {id: 4, title: 'ракетки', price: 900},
+]
+
+let result = goods.reduce((summ, elem) => summ + elem.price / goods.length, 0) 
 console.log(result);
+
+// найти среднее значение цены только у тех, кто начинается на `р`
+
+let result1 = goods.reduce((summ, elem) => (elem.title[0] == 'р') ? summ + elem.price : summ, 0)
+console.log(result1);
