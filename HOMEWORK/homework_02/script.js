@@ -93,6 +93,6 @@ function checkSome(array, callback) {
     }
     console.log(`Ни один элемент не удовлетворяют указанному условию`);
 }
-checkSome(arr, (elem) => elem < 2)
+checkSome(arr, (elem) => elem === 2)
 
 
