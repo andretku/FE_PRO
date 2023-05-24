@@ -150,17 +150,78 @@
 
 // --------------- пример ------------------
 // найти среднее значение цены в массиве объектов
-let goods = [
-    {id: 1, title: 'велосипед', price: 500},
-    {id: 2, title: 'самокат', price: 200},
-    {id: 3, title: 'ролики', price: 300},
-    {id: 4, title: 'ракетки', price: 900},
-]
+// let goods = [
+//     {id: 1, title: 'велосипед', price: 500},
+//     {id: 2, title: 'самокат', price: 200},
+//     {id: 3, title: 'ролики', price: 300},
+//     {id: 4, title: 'ракетки', price: 900},
+// ]
 
-let result = goods.reduce((summ, elem) => summ + elem.price / goods.length, 0) 
-console.log(result);
+// let result = goods.reduce((summ, elem) => summ + elem.price / goods.length, 0) 
+// console.log(result);
 
 // найти среднее значение цены только у тех, кто начинается на `р`
 
-let result1 = goods.reduce((summ, elem) => (elem.title[0] == 'р') ? summ + elem.price : summ, 0)
-console.log(result1);
+// let result1 = goods.reduce((summ, elem) => (elem.title[0] == 'р') ? summ + elem.price : summ, 0)
+// console.log(result1);
+
+// ============= split ====================
+// let string = `Hello my friend`
+// console.log(string.split(` `));
+
+let string = '102 054 194 395 023 56'
+
+// Задача: напишите функцию checkNum(string), которая в качестве аргумента принимает строковый тип. 
+// Функция должна проверить, все ли числа деляться на 2 без остатка. Если делятся - функция должна вывести в косноль 
+// сообщение "Все числа делятся", в противном случае "Не все числа делятся"
+
+// function checkNum(string) {
+// let num = string.split(` `)
+//     for (let i = 0; i < num.length; i++) {
+//         if (+num[i] % 2 !== 0) {
+//             console.log(`Не все числа делятся`);
+//             return
+//         }
+//     }
+//     console.log(`Все числа делятся`);
+// }
+// checkNum(string)
+
+// ------------ 2 решение --------------------
+
+// function checkNum(string) {
+//     let num = string.split(` `)
+//     let filtered = num.filter(elem => +elem % 2 !== 0)
+//     if (filtered.length !== 0){
+//         console.log(`Все числа делятся`);
+//     }
+//     else {
+//         console.log(`Не все числа делятся`);
+//     }
+// }
+// checkNum(string)
+
+// ------------ 3 решение - одной строкой -----------------
+// на практике стараются не использовать, потому что код не читаемый
+// function checkNum(string) {
+//     console.log( (string.split(` `).find(elem => +elem % 2 !== 0)) ? `Не все числа делятся` : `Все числа делятся`  );
+// }
+// checkNum(string)
+
+//---------------------------------------------------------------------
+// Создайте функцию getSum(string), которая высчитывает сумму всех чисел в строке. 
+// Результат должен оказаться в консоли.
+// Доп * написать функцию одной строкой
+console.log(string.split(` `).reduce((acc, elem) => acc + +elem,0));
+
+
+// ====================== join ==============================================
+
+//Добавить точки после каждого слова
+let str = `Hello my friend`
+console.log(str.split(` `).map(elem => elem + `.`).join(` `))
+
+// -----------------------------
+// Напишите программу, которая вернет строковый тип с квадратом каждого числового типа
+let str1 = `10 40 60`
+console.log(str1.split(` `).map(elem => elem ** 2).join(` `));

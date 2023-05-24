@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,13 +16,13 @@
     height: 400px;
     width: 400px;
     display: block;
-    object-fit: cover   ;
+    object-fit: cover;
 }
 
-.gallery__btn{
+.gallery__btn {
     background: black;
     border: none;
-    color:#fff;
+    color: #fff;
     padding: 8px 16px;
 }
 
@@ -37,7 +37,7 @@
     max-width: 400px;
     display: grid;
     margin: 0 auto;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .grid div {
@@ -46,19 +46,20 @@
     border: 1px solid black;
 }
 
-
+/* ===================== */
 
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-color: #f1f1f1;
 }
 
 nav {
     background-color: #111;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 8px 16px;
 }
 
@@ -80,17 +81,16 @@ nav {
     color: #111;
 }
 
-.navbar__toggle{
+/* бургерное меню тремя полосочками */
+.navbar__toggle {
     width: 20px;
     height: 20px;
-    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
     display: none;
-}
-
-.navbar__mobile {
-    display: none;
+        /* добавляем, чтобы паддинг работал наружу, а не сдавливал полосочки */
+    box-sizing: initial;
+    padding: 7px;
 }
 
 .navbar__toggle span {
@@ -99,8 +99,36 @@ nav {
     border-bottom: 2px solid #fff;
 }
 
+.navbar__toggle_active{
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.navbar__toggle_active span {
+    border-bottom: 2px solid #000;
+}
+
+.ps-relative {
+    position: relative;
+}
+
 @media (max-width:768px) {
+
+    .navbar {
+        display: none;
+    }
+
     .navbar__toggle {
         display: flex;
+    }
+
+    .navbar__show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 42px;
+        background: #111;
+        min-width: 256px;
     }
 }
