@@ -23,10 +23,20 @@ console.log(goods.find(elem => elem.price % 5 === 0))
 console.log(goods.find(elem => elem.count > 11).id)
 
 //5. Посчитайте количество элементов, count которых является нечетным числом
-console.log(goods.filter(elem => elem.count % 2 !== 0).length)
+// console.log(goods.filter(elem => elem.count % 2 !== 0).length)
+//вариант 2:
+let count = 0
+goods.forEach(elem => {
+    if (elem.count % 2 !== 0)
+    count++
+    return count
+})
+console.log(`5 -` + count);
 
 //6. Посчитайте количество элементов, имя которых начинается на “Т”
-console.log(goods.filter(elem => elem.title.startsWith('Т')).length)
+let res = goods.filter(elem => elem.title.startsWith('Т'))
+let res1 = Object.keys(res).length
+console.log(`6 -` + res1)
 
 //7. Создайте новый массив, элементы которого будут хранить значение цен всех товаров с 35-процентной скидкой (только цены)
 console.log(goods.map(elem => elem.price * 0.65))

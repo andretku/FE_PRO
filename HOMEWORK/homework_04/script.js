@@ -13,28 +13,34 @@ console.log(result2);
 
 // ============== 3. ===========================
 // В программе задана переменная numbers, которая хранит массив из чисел. Определите, какое максимальное количество элементов массива numbers (в порядке, который реализован в массиве) можно сложить, чтобы их итоговая сумма не превышала 50. Результат выведите в консоль.
-let numbers = [10, 20, 33, 55, 100] 
+let numbers = [10, 20, 30, 55, 100] 
 let sum = 0
 
-function numbersFn(arr) {
-for (let i = 0; i < arr.length; i++) {
-    sum += arr[i]
-    if (sum > 50) return i
-}}
-console.log(numbersFn(numbers))
+// function numbersFn(arr) {
+// for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i]
+//     if (sum > 50) return i
+// }}
+// console.log(numbersFn(numbers))
 
-// второй вариант не работает:
-// let result3 = numbers.reduce((acc,elem,index) => {
-//     acc + elem
-//     if (acc > 50) return index
-// })
-// console.log(result3);
+// второй вариант через reduce:
+let count = numbers.reduce((acc, elem) => {
+    if(sum + elem <= 50){
+        sum += elem
+        return acc + 1
+    } else return acc
+},0)
+console.log(count);
 
-// третий вариант не работает должным образом:
-// numbers.forEach(elem => {
-//     sum += elem
-//     if (sum > 50) return console.log(numbers.indexOf(elem))
-// })
+// третий вариант через forEach:
+// let count = 0;
+// numbers.forEach((elem) => {
+//     if (sum + elem <= 50) {
+//         sum += elem;
+//         count++;
+//     }
+// });
+// console.log(count);
 
 // ================= 4. ===============================
 // В программе задана переменная values, которая хранит массив из строк. Определите математическую сумму всех элементов, которые при преобразовании в число не вернут значение NaN. 
