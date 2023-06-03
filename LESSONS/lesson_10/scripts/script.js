@@ -83,3 +83,46 @@ switch_elem.onclick = () => {
 
 // Задача: сделать так, чтобы при обновлении страницы тема сохранялась.
 // добавил решение в код, занес данные в localStorage
+
+
+// ============================ LESSON 11 ================================
+
+//Как сохранять и получать объекты
+
+// let obj = {
+//     name: `Alex`,
+//     salary: 1000
+// }
+
+// localStorage.setItem(`item1`, JSON.stringify(obj))
+// let userName = JSON.parse(localStorage.getItem(`item1`)).name
+// console.log(userName);
+
+let string = '[10,20,30,40,50,60]'
+
+// Задание (очень частое): добавьте в массив 2 новыx элемента 
+// 0 в начало, и 70 в конце. Итоговую строку выведите в консоль
+
+let result = JSON.parse(string)
+result.unshift(0)
+result.push(70)
+string = JSON.stringify(result)
+console.log(string);
+
+// Продемонстрируйте пример записи объекта в LS и чтение его оттуда
+localStorage.setItem(`array`, string)
+console.log(localStorage.getItem(`array`))
+
+//Задача. Опишите две функции: writeLocalStorage и readLocalStorage. Функции должны записывать или считывать объекты в localStorage соответственно.
+// writeLocalStorage - получает объект
+// readLocalStorage  - возращает значение LS
+
+function writeLocalStorage(obj, key) {
+    localStorage.setItem(key, JSON.stringify(obj))
+}
+function readLocalStorage(key) {
+    let result = JSON.parse(localStorage.getItem(key))
+    return result
+}
+writeLocalStorage({name: `Aleks`, salary: 5000}, `key1`)
+console.log(readLocalStorage(`key1`))
