@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.root {
+    max-width: 800px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:space-between;
+    width: 250px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px 30px;
+    font-family: Helvetica, sans-serif;
+}
+
+.card img {
+    padding-bottom: 10px;
+    max-height: 150px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.fa-star {
+    padding: 10px 10px;
+}
+
+.active {
+	color: orange
+}

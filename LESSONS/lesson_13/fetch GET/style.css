@@ -1,0 +1,26 @@
+.product_wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 430px;
+    justify-items: center;
+    gap: 50px;
+    margin: 50px;
+}
+
+.product_image {
+    width: 150px;
+    height: 150px;
+}
+
+.product_elem {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: antiquewhite;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
