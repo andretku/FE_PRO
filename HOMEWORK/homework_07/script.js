@@ -30,7 +30,6 @@ function render(item) {
     });
 }
 
-
 function rating(elem) {
     let star_div = document.createElement(`div`)
     let rating = Math.round(elem.rating)
