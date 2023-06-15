@@ -37,9 +37,8 @@ function rating(elem) {
     for (let i = 0; i < 5; i++) {
         let star_item = document.createElement('span')
         star_item.classList.add(`fa`, `fa-star`)
-        while (i < rating) {
+        if (i < rating) {
             star_item.classList.add(`active`)
-            break;    
         }
         star_div.append(star_item)
     }   
