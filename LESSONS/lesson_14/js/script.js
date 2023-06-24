@@ -93,7 +93,7 @@ person1.getUserInfo()
 
 let person2 = new Person('Andrey', 'Smith', 39)
 
-// выносим универсальную функцию в прототип, чтобы любой объект с классом new Person() может к нему мог обратиться
+// выносим универсальную функцию в прототип, чтобы любой объект с классом new Person() мог к нему мог обратиться
 Person.prototype.getUserName = function () {
     document.write(`<h1> Username: ${this.username}</h1>`);
 }
@@ -101,14 +101,14 @@ Person.prototype.getUserName = function () {
 person1.getUserName()
 person2.getUserName()
 
-// проверка, можем ли мы вызвать функцию для этой переменной - выдаст true либо false
+// проверка, можем ли мы вызвать функцию для этой переменной - выдаст true
 console.log('getUserName' in person2);
 
 // проверка, есть ли функция внутри объекта
 console.log(person2.hasOwnProperty('getUserName'));
 
 // -----------------------------------------------------
-// Классы EC-6 стандарта
+// Классы ES6 стандарта
 
 class Student {
     constructor(username, surname, rating) {
@@ -116,7 +116,7 @@ class Student {
         this.surname = surname;
         this.rating = rating;
     }
-    //считаем среднее значение балла у студента. Но эта функция будет внутри Prototype
+    //считаем среднее значение балла у студента. Но эта функция будет внутри Prototype. Давид называет это МЕТОД, потому что не используется слово function, и каждый элемент контсруктора может к нему обратиться
     average() {
         if (!this.rating) return 0;
         return this.rating.reduce((acc, sum) => acc + sum) / this.rating.length
@@ -129,10 +129,75 @@ console.log(student1.average());
 
 console.dir(Student);
 
+// --------------------------------------------------
+// Статические свойства и методы
+// --------------------------------------------------
+//Пример изменения свойства внутри метода. Speed по умолчанию 0, но мы его меняем внутри метода driving.
+// В скобках конструктора передаем СВОЙСТВО, не ключ
+class Car{
+    constructor(model, year) {
+        this.model = model
+        this.year = year
+        this.speed = 0
+    }
+    driving(speed) {
+        let newSpeed = this.speed
+        this.speed = speed
+        console.log((`${this.model} едет со скоростью ${this.speed} км/ч`))
+        return newSpeed
+    }
+}
+let car3 = new Car('Tesla', 2020)
 
-// --------------------------------------------------
-// Статические классы
-// --------------------------------------------------
+// Если мы добавляем новую переменную и возвращаем ее через return, то при каждом новом вызове метода, значение будет меняться
+
+let a = car3.driving(100)   // =0
+let b = car3.driving(80)    // =100
+let c = car3.driving(88888) // =80
+
+
+// Статическое свойство - это свойство, которое будет доступно только классу. Оно определяется вне конструктора
+// Статические методы - методы, которые доступны только внутри класса. Экземпляры класса не имеют доступ к этим методам
+
+class Route {
+    constructor(name) {
+        this.name = name
+    }
+    static job = 'IT'           // - стат свойство
+
+    static sayHi() {            // - стат метод
+        console.log('Hello!');
+    }
+}
+let k = new Route('Alex')
+console.log(k.job);         // undefined - экземпляры класса не имеют доступа к статическим свойствам
+console.log(Route.job);     // IT
+
+k.sayHi()       // is not a function
+Route.sayHi()   // Hello!
+
+
+//-----------------------------------------------
+
+// Счетчик, который считает количество обращений к методу
+
+
+class Count {
+
+}
+
+
+// --------------------------------------
+
+// Пример: как создать массив - классически или с помощью класса
+let arr = [1,2,3,4]
+let arr2 = Array(1,2,3,4)
+// почти все методы массива не являются статичными
+Array.isArray()   // единственный статический метод в Array
+
+
+
+
 
 //console - это класс
 //log - это метод
@@ -190,7 +255,7 @@ class Developer extends Employee {
 let user2 = new Developer(user1.username, user1.surname, user1.company, ['HTML', 'CSS', 'JS'])
 
 //=============================================================
-// Пример (div в html)
+// Пример (обращаемся к div#primer в html)
 
 let userStore = {};
 
@@ -202,11 +267,10 @@ class User {
     }
 }
 let formInput = document.querySelectorAll(".form-input");
-
 let btn = document.querySelector(".btn");
+
 formInput.forEach(elem => {
     elem.onkeyup = handlerChange;
-
 })
 
 btn.onclick = saveForm;
@@ -220,3 +284,4 @@ function saveForm(){
 
     console.log(user);
 }
+

@@ -97,6 +97,21 @@ let store = {
             }, ]
 
     }
+};
+
+
+
+const addProductInCart = (data) => {
+    data.cartId = Date.now();
+
+    let cartItems = JSON.parse(localStorage.getItem('cartItems'));
+
+    if(!cartItems) {
+        cartItems = [];
+    }
+    cartItems = [...cartItems, data];
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+
 }
 
 const setNavbar = (state) => {
@@ -119,9 +134,6 @@ const setNavbar = (state) => {
     return navbar
 }
 
-
-
-
 const setProducts = (catalogs, products) => {
     let cardsItems = document.createElement(`div`)
         cardsItems.classList.add(`cards__items`)
@@ -137,6 +149,7 @@ const setProducts = (catalogs, products) => {
 
             let itemIcon = document.createElement("img");
                 itemIcon.setAttribute("src", "./img/cart.svg");
+                itemIcon.addEventListener('click', () => addProductInCart(product));
                 itemHeader.append(itemIcon);
 
             let itemImg = document.createElement("img");
@@ -161,11 +174,27 @@ const setProducts = (catalogs, products) => {
     return cardsItems
 }
 
+const openModalCart = () => {
+    let modalCart = document.querySelector(`.modal`)
+
+    modalCart.classList.toggle(`modal__active`)
+}
+
+
+
+
+
 function render() {
     let navbar = document.querySelector(`#navbar`)
     let cards = document.querySelector(`.cards`)
+    let cartOpen = document.querySelector(`.header__cart`)
+    let cartClose = document.querySelector(`.cart__close`)
         navbar.append(setNavbar(store.navbar))
         cards.append(setProducts(store.navbar, store.products))
+    
+        cartOpen.onclick = openModalCart;
+        cartClose.onclick = openModalCart;
 }
 
 render()
+

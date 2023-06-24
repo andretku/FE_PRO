@@ -101,6 +101,8 @@ aside {
     padding: 10px 0;
     color: var(--main-color-umbra);
     position: relative;
+    font-size: 16px;
+    z-index: 2;
 }
 
 .filter__label{
@@ -181,3 +183,69 @@ aside {
     font-weight: bold;
     color: var(--main-color-umbra);
 }
+
+.modal {
+    /* заливка на 80% */
+    background-color: #ffffff80;    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    display: none;
+}
+
+.modal__active {
+    display: block;
+}
+
+.modal .cart {
+    max-width: 460px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px 0 0 8px;
+    padding: 52px 48px;
+}
+
+.modal .cart__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal .cart__header h3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.modal .cart__header img {
+    padding: 10px;
+}
+
+.cart__body {
+    display: flex;
+    flex-direction: column;   
+}
+
+.modal .cart__empty {
+    font-size: 22px;
+    margin: 24px 0;
+}
+
+.btn {
+    border: none;
+    background-color: var(--main-color-umbra);
+    border-radius: 8px;
+    color: var(--main-color-white);
+    padding: 14px 18px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--main-color-concreteLandscape);
+}
+
