@@ -178,5 +178,3 @@ let card1 = new Card()
 card1.setCard = '3333 3333 3333'
 console.log(card1.readCard);
 
-!!! ??? ВОПРОС на 27.06: ИСПОЛЬЗОВАТЬ this. или obj1. ???
-Чем отличается метод (average() lesson14) от свойства геттер и сеттер?
