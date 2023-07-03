@@ -255,33 +255,3 @@ class Developer extends Employee {
 let user2 = new Developer(user1.username, user1.surname, user1.company, ['HTML', 'CSS', 'JS'])
 
 //=============================================================
-// Пример (обращаемся к div#primer в html)
-
-let userStore = {};
-
-class User {
-    constructor(username, surname, url) {
-        this.username = username;
-        this.surname = surname;
-        this.url = url;
-    }
-}
-let formInput = document.querySelectorAll(".form-input");
-let btn = document.querySelector(".btn");
-
-formInput.forEach(elem => {
-    elem.onkeyup = handlerChange;
-})
-
-btn.onclick = saveForm;
-
-function handlerChange(e){
-    userStore[e.target.name] = e.target.value;
-}
-
-function saveForm(){
-    let user = new User(userStore.username, userStore.surname, userStore.url)
-
-    console.log(user);
-}
-
