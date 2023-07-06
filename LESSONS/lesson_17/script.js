@@ -18,12 +18,14 @@ function render(data){
         let product_item = document.createElement('div');
         product_item.className = 'product_item';
 
-        let img_product = document.createElement('img');
+        let img_product = document.createElement('div');
+        img_product.className = 'img_product';
+        img_product.style.backgroundImage = `url(${elem.images[0]})`
+
         let p_title = document.createElement('p');
         let p_price = document.createElement('p');
         let product_desc = document.createElement('div');
 
-        img_product.src = elem.images[0];
         p_title.innerText = elem.title;
         p_price.innerText = elem.price;
 
@@ -45,8 +47,6 @@ function modal(data) {
     let div_modal_area = document.createElement('div');
     div_modal_area.className = 'modal_area';
 
-
-
     // Modal container - верхний элемент - модальное окно, - который появл при нажатии на карточку
     let div_modal_container = document.createElement('div');
     div_modal_container.className = 'modal_container';
@@ -57,10 +57,25 @@ function modal(data) {
     div_product_images.className = 'product_images_wrapper';
     div_product_info.className = 'product_info_wrapper';
 
+    // Product info - текст под картинкой в модальном окне
+    let div_product_description = document.createElement('div');
+    div_product_description.className = 'product_description';
+
+    let text_product_descr = document.createElement('p');
+    text_product_descr.innerText = `Product description: ${data.description}`;
+
+    let product_modal_title = document.createElement('h4');
+    product_modal_title.innerText = `Product name: ${data.title}`;
+
+    div_product_description.append(product_modal_title, text_product_descr, rating(data.rating));
+
+
+
     // выводим одну главную картинку по центру
     let main_img = document.createElement('img');
+    main_img.className = 'modal_main_img';
     main_img.src = data.images[0];
-    div_product_info.append(main_img);
+    div_product_info.append(main_img, div_product_description);
 
     data.images.forEach(elem => {        // выводим все картинки для каждого объекта, который мы выбрали
         let image = document.createElement('img');  

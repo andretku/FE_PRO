@@ -14,6 +14,18 @@ db.user.insertMany ([
     {id: 3, name: 'Roman', lastname: 'Ivanov', age: 35},
 ]);
 
+db.user.insertMany ([
+    {id: 1, name: 'Анатолий', age: 32, gender: 'm'},
+    {id: 2, name: 'Светлана', age: 25, gender: 'f'},
+    {id: 3, name: 'Никита', age: 33, gender: 'm'},
+    {id: 3, name: 'Ольга', age: 22, gender: 'f'},
+]);
+
+1 Анатолий 28 m
+2 Светлана 25 f
+3 Никита 33 m
+4 Ольга 22 f
+
 db.products.find({title: 'bike'})
 
 db.products.find({price: {$gt: 1000}})
@@ -33,3 +45,9 @@ db.products.find({
 })
 
 db.products.find({price: {$gte: 1000, $lt: 2000}})
+
+
+db.products.find({ count: {$in: [0,5,10]}})
+
+
+db.products.find({ marks: {$elemMatch: {$eq: 3}}})
